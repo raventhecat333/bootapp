@@ -1,0 +1,19 @@
+{
+	"duration": 0.18,
+	"animations": [
+		{
+			"type": "float2",
+			"worldNodePath": [],
+			"componentType": "",
+			"scriptPropertyName": "",
+			"propertyId": "LocalScale",
+			"keyCurves": [
+				{ "time":   0.0, "interp": "bezier",  "value": [ 
+					[ 2.0,  2.0 ], 
+					[ 2.13, 2.13 ], 
+					[ 2.13, 2.13 ], 
+					[ 2.13, 2.13 ] ] }
+			]
+		}
+	]
+}

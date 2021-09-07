@@ -1,0 +1,37 @@
+{
+  "sprite_sheet": "sheet_356d59b3-fb4d-4b85-980f-e23446bf1816",
+  "frames": [
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr01.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr02.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr03.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr04.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr05.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr06.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr07.png"
+    ],
+    [
+      50,
+      "LIGHTNING_Icon_Loading_04_fr08.png"
+    ]
+  ]
+}

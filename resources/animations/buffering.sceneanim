@@ -1,0 +1,20 @@
+{
+	"duration": 2,
+	"animations": [
+		{
+			"type": "float",
+			"worldNodePath": [],
+			"componentType": "",
+			"scriptPropertyName": "",
+			"propertyId": "LocalRotation",
+			"keyCurves": [
+				{ 
+					"time":   0.0, 
+					"interp": "linear",  
+					"value": [ 0, -6.2831853071795 ], 
+					"comment": "rotate the buffering icon (2*pi)" 
+				}
+			]
+		}
+	]
+}

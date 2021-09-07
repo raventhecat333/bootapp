@@ -1,0 +1,18 @@
+{
+	"duration": 0.5,
+	"animations": [
+		{
+			"type": "float2",
+			"worldNodePath": [ "..", "..", "play_bg" ],
+			"componentType": "",
+			"scriptPropertyName": "",
+			"propertyId": "LocalPosition",
+			"comment": "the original position of the play controls is [0, 88], screen width is 320",
+			"keyCurves": [
+				{ "time":   0.00, "interp": "hermite",  "value": [ [   0,  80 ], [ -320,  80 ], [ -1,  0 ], [ -10,  0 ] ], 	"comment": "move left" },
+				{ "time":   0.25, "interp": "instant",  "value":   [ 320,  80 ],											"comment": "jump to far right" },											
+				{ "time":   0.251, "interp": "hermite",  "value": [ [ 320,  80 ], [ 0,  80 ], [ -1,  0 ], [ -10,  0 ] ],	"comment": "move left back to original" }
+			]
+		}
+	]
+}

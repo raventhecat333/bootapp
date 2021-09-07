@@ -1,0 +1,85 @@
+{
+	"duration": 1,
+	"animations": [
+		{
+			"type": "float2",
+			"worldNodePath": [],
+			"componentType": "",
+			"scriptPropertyName": "",
+			"propertyId": "LocalScale",
+			"keyCurves": [
+				{ "time":   0.0, "interp": "hermite",  "value": [ 
+					[ 1.2,  1.2 ], 
+					[ 10,  10 ], 
+					[ 5.0,  5.0 ], 
+					[ 0.0, 0.0 ] 
+				], "comment": "explode the thumbnail" }
+			]
+		},
+		{
+			"type": "float",
+			"worldNodePath": [ ],
+			"componentType": "sprite2",
+			"scriptPropertyName": "",
+			"propertyId": "Alpha",
+			"keyCurves": [
+				{ 
+					"time":   0.0, 
+					"interp": "hermite",  
+					"value": [ 1.0 , 0.0, -2, 0 ], 
+					"comment": "explode and disappear" 
+				}
+			]
+		},
+		{
+			"type": "float",
+			"worldNodePath": [ "EmptyBackground" ],
+			"componentType": "sprite2",
+			"scriptPropertyName": "",
+			"propertyId": "Alpha",
+			"keyCurves": [
+				{ 
+					"time":   0.0, 
+					"interp": "hermite",  
+					"value": [ 1.0 , 0.0, -2, 0 ], 
+					"comment": "explode and disappear" 
+				}
+			]
+		},
+		{
+			"type": "float",
+			"worldNodePath": [ "Selected" ],
+			"componentType": "sprite2",
+			"scriptPropertyName": "",
+			"propertyId": "Alpha",
+			"keyCurves": [
+				{ 
+					"time":   0.0,
+					"interp": "linear",  
+					"value": [ 1.0, 1.0 ]
+				},
+				{ 
+					"time":   0.01, 
+					"interp": "linear", 
+					"value": [ 0.0, 0.0 ] 
+				}
+			],
+			"comment": "disappear immediately and must be reset in onFocus()"
+		},
+		{
+			"type": "float",
+			"worldNodePath": [ "Thumbnail" ],
+			"componentType": "texture",
+			"scriptPropertyName": "",
+			"propertyId": "Alpha",
+			"keyCurves": [
+				{ 
+					"time":   0.0, 
+					"interp": "hermite",  
+					"value": [ 1.0 , 0.0, -2, 0 ], 
+					"comment": "explode and disappear" 
+				}
+			]
+		}
+	]
+}
