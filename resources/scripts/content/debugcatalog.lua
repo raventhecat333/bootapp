@@ -92,7 +92,7 @@ if useDebugCatalog then
 				"agePrerollVideo": "rom:/data/dammy.moflex"
 			}
 		},
-		{
+    {
 			"setNode": {
 				"id": "episode:testvideo4",
 				"version": "649f671be9bd0e2bf9fa18d73de07d57",
@@ -100,6 +100,46 @@ if useDebugCatalog then
 				"number": 4,
 				"ageRate": 6,
 				"title": "Test 4",
+				"description": "This should load",
+				"mediaUrls": {
+					"en": "https://https://github.com/raventhecat333/silver-couscous/blob/main/intro.moflex?raw=true",
+					"fr": "https://https://github.com/raventhecat333/silver-couscous/blob/main/intro.moflex?raw=true"
+				},
+				"viewCount": 111,
+				"imageUrls": {
+					"default": "https://dm13bvvnwveun.cloudfront.net/inazuma/thumbs/IE02-thumbnail.3dst"
+				},
+				"agePrerollVideo": "rom:/data/dammy.moflex"
+			}
+		},
+    {
+			"setNode": {
+				"id": "episode:testvideo5",
+				"version": "649f671be9bd0e2bf9fa18d73de07d57",
+				"type": "episode",
+				"number": 5,
+				"ageRate": 6,
+				"title": "Test 5",
+				"description": "This should load",
+				"mediaUrls": {
+					"en": "https://github.com/raventhecat333/silver-couscous/raw/main/intro.moflex",
+					"fr": "https://github.com/raventhecat333/silver-couscous/raw/main/intro.moflex"
+				},
+				"viewCount": 111,
+				"imageUrls": {
+					"default": "https://dm13bvvnwveun.cloudfront.net/inazuma/thumbs/IE02-thumbnail.3dst"
+				},
+				"agePrerollVideo": "rom:/data/dammy.moflex"
+			}
+		},
+		{
+			"setNode": {
+				"id": "episode:testvideo6",
+				"version": "649f671be9bd0e2bf9fa18d73de07d57",
+				"type": "episode",
+				"number": 6,
+				"ageRate": 6,
+				"title": "Test 6",
 				"description": "This shouldn't load too (dead link)",
 				"mediaUrls": {
 					"en": "https://dm13bvvnwveun.cloudfront.net/inazuma/videos/IE_ENGLISH_03.moflex",
