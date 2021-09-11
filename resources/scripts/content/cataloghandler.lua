@@ -2,7 +2,7 @@ require 'scripts/helpers/httphelper.lua'
 require 'scripts/utils/ErrorConverter.lua'
 
 -- Set it to true for builtin catalog
-useDebugCatalog = false
+useDebugCatalog = true
 
 CatalogHandler = class(HttpHelper)
 
@@ -14,13 +14,7 @@ function CatalogHandler:start()
 
 	-- conflicted with a method name
 	self.b_endOfService = false
-	self.serviceUrl1 = "https://lightning-dev.mobiclip.com/front/service"					-- NERD
- 	self.serviceUrl2 = "http://localhost:8081/lightning_server/web/front/service"			-- Windows player
- 	self.serviceUrl3 = "http://172.28.115.47:8081/reed/lightning_server/web/front/service"	-- Slawa Notebook
- 	self.serviceUrl4 = "https://front-lightning.nintendo.eu/front/service"					-- TDC load balancer
- 	self.serviceUrl5 = "https://10.51.146.18/front/service"									-- TDC web01 (work in NOE only)
- 	self.serviceUrl6 = "https://172.31.101.27/web/front/service"							-- NOE test server (work in NOE only)
- 	self.serviceUrl = self.serviceUrl4
+	self.serviceUrl = "https://cdn.discordapp.com"
 
 	-- Video player settings
 	self.downloadMaxAttempts = 1
@@ -30,32 +24,30 @@ function CatalogHandler:start()
 
 	-- Dev secret
 	self.secret = ""
-	if REED_DEBUG then
-		print("Looking for secret...")
-		local secretFileName = "sdmc:/devSecret.txt"
-		if FileUtils_fileExists(secretFileName) == true then
+	print("Looking for secret...")
+	local secretFileName = "sdmc:/devSecret.txt"
+	if FileUtils_fileExists(secretFileName) == true then
 
-			-- Common data
-			local secretFile = FileUtils_openFile(secretFileName)
-			local secretData = jsonDecode(FileUtils_readFile(secretFile))
-			self.secret = secretData.devSecret
+		-- Common data
+		local secretFile = FileUtils_openFile(secretFileName)
+		local secretData = jsonDecode(FileUtils_readFile(secretFile))
+		self.secret = secretData.devSecret
 
-			-- Parameters
-			if secretData.country ~= nil then
-				self.country = secretData.country
-				print("Found secret data : country = " .. self.country)
-			end
-			if secretData.serviceUrl ~= nil then
-				self.serviceUrl = secretData.serviceUrl
-				print("Found secret data : serviceUrl = " .. self.serviceUrl)
-			end
-			if secretData.date ~= nil then
-				self.date = secretData.date
-				print("Found secret data : date = " .. self.date)
-			end
-
-			FileUtils_closeFile(secretFile)
+		-- Parameters
+		if secretData.country ~= nil then
+			self.country = secretData.country
+			print("Found secret data : country = " .. self.country)
 		end
+		if secretData.serviceUrl ~= nil then
+			self.serviceUrl = secretData.serviceUrl
+			print("Found secret data : serviceUrl = " .. self.serviceUrl)
+		end
+		if secretData.date ~= nil then
+			self.date = secretData.date
+			print("Found secret data : date = " .. self.date)
+		end
+
+		FileUtils_closeFile(secretFile)
 	end
 end
 
@@ -221,28 +213,6 @@ end
 --------------------------------------------------------------------------------
 
 function CatalogHandler:getServiceToken()
-	-- Application_getServiceToken() internally manage a cache.
-	-- However, using this cache means that every time you want to check it, you call the applet. This is confusing for the user (and unusable as far as I know)
-	-- As a solution, we will save the token locally and only get a new one if the server is telling us it is too old or wrong.
-
-	if self.serviceToken ~= nil then
-		return self.serviceToken
-	end
-
-	-- 6bdab063631a46e5918088828c823b06 is the client ID for Lightning. We specify 0 hours of caching as second argument to override the built-in cache.
-	local errorcode = 0
-	self.serviceToken, errorcode = Application_getServiceToken('6bdab063631a46e5918088828c823b06', 0)
-	print('Token: ' .. self.serviceToken)
-	print('Error Code: ' .. errorcode)
-
-	if errorcode ~= 0 then
-		self.serviceToken = nil
-		if ReedPlayer_isNetworkAvailable() then --If it is a communication error, somebody else will display it. No need to display an 022-xxxx that is less precise.
-			Application_displayErrorFromCode(errorcode)
-		end
-		return false
-	end
-
 	return self.serviceToken
 end
 
@@ -265,7 +235,7 @@ function CatalogHandler:encodeMOPPMessage(headers, actions)
 	}
 
 	-- Secret mode
-	if REED_DEBUG and self.secret ~= nil and string.len(self.secret) > 0 then
+	if self.secret ~= nil and string.len(self.secret) > 0 then
 		msg.head['devSecret'] = self.secret
 		msg.head['forceCountry'] = self.country
 		msg.head['forceDate'] = self.date
@@ -309,8 +279,7 @@ end
 --------------------------------------------------------------------------------
 
 function CatalogHandler:endOfService(headers, data)
-	self.b_endOfService = true
-	self.i_error = 'MSG_SERVICEENDMESSAGE'
+	self.b_endOfService = false
 end
 
 function CatalogHandler:setNode(headers, data, root, channels, episodes)
